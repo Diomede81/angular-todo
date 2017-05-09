@@ -47,8 +47,6 @@ The site is styled with Bootstrap.
     - **Bower** is used to manage the installation of our libraries and frameworks
  
 ## Contributing
-
-## Contributing
  
 ### Getting the code up and running
 1. Firstly you will need to clone this repository by running the ```git clone <project's Github URL>``` command
