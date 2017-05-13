@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" ng-app="ToDoApp">
+<html lang="en" ng-app="ToDoApp" ng-cloak>
 <head>
     <meta charset="UTF-8">
     <title>Angular Todo</title>
@@ -24,11 +24,12 @@
             <div class="navbar-header">
                 <a class="navbar-brand" href="/">Angular ToDo</a>
             </div>
-            <ul class="nav navbar-nav navbar-right">
+            <ul class="nav navbar-nav navbar-right" ng-controller="LogOutController">
                 <li><a href="/">Home</a></li>
                 <li><a href="/todo">ToDO</a></li>
                 <li><a href="/accounts/register">Account</a></li>
-                <li ng-controller="LogOutController" ><a href ng-show="logOut!=undefined" ng-click="removeLogin()">LogOut</a></li>
+                <li  ><a href ng-show="logOut!=undefined" ng-click="removeLogin()">LogOut</a></li>
+                <li><a ng-show="logOut!=undefined" href ng-bind-html="greeting" style="text-transform:uppercase; color:red;">{{greeting}}</a></li>
             </ul>
         </div>
     </nav>
