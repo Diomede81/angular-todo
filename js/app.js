@@ -1,7 +1,7 @@
 /**
  * Created by Diomede on 09/05/2017.
  */
-angular.module('ToDoApp', ['ngRoute', 'RouteControllers','UserService','angular-storage','TodoService']);
+angular.module('ToDoApp', ['ngRoute', 'RouteControllers','UserService','angular-storage','TodoService','TodoDirective']);
 
 angular.module('ToDoApp').config(function($locationProvider, $routeProvider){
 
@@ -28,6 +28,13 @@ angular.module('ToDoApp').config(function($locationProvider, $routeProvider){
             templateUrl:'templates/edit-todo.html',
             controller: 'EditTodoController'
 
-    });
+    })
+
+    .when('/accounts/login',{
+
+        templateUrl: 'templates/login.html',
+        controller: 'LoginController'
+
+    })
 
 });

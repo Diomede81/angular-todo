@@ -10,7 +10,18 @@ angular.module('UserService',[])
                 }
             };
             return UserAPIService;
-        });
+        })
+
+        .factory('UserLogin', function($http){
+
+            UserAPIlogin = {
+                authLogin: function (url, data) {
+                    return $http.post(url, data );
+                }
+            };
+
+            return UserAPIlogin;
+});
 
 angular.module('TodoService',[])
 .factory('TodoAPIService', function($http){
