@@ -36,5 +36,11 @@ angular.module('ToDoApp').config(function($locationProvider, $routeProvider){
         controller: 'LoginController'
 
     })
+        .when('/accounts/logOut',{
+
+        templateUrl: 'templates/LogOutPage.html',
+        controller: 'LogOutController'
+
+    })
 
 });

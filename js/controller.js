@@ -2,10 +2,9 @@
  * Created by Diomede on 09/05/2017.
  */
 angular.module('RouteControllers',[])
-.controller('HomeController',function($scope){
+.controller('HomeController',function($scope,$window){
 
     $scope.title = "Welcome To Angular Todo!!";
-
 
 
 })
@@ -139,11 +138,16 @@ angular.module('RouteControllers',[])
     }
 })
 
-.controller('LoginController', function($scope, $location,store, UserLogin){
+.controller('LoginController', function($scope, $location,store, UserLogin,$window){
 
     var URL = "https://morning-castle-91468.herokuapp.com/";
 
     $scope.loginUser = {};
+
+    $scope.refreshLogin = function(){
+        $location.path("/todo");
+        /*$window.location.reload();*/
+    };
 
     $scope.submitForm = function(){
 
@@ -156,7 +160,7 @@ angular.module('RouteControllers',[])
                 $scope.token = results.data.token;
                 store.set('username', $scope.loginUser.username);
                 store.set('authToken', $scope.token);
-                $location.path("/todo");
+                $scope.refreshLogin();
                 alert("You have successfully Logged-in to Angular ToDo");
 
             }).catch(function(err){
@@ -165,5 +169,17 @@ angular.module('RouteControllers',[])
             });
         }
     };
-});
+})
 
+.controller('LogOutController', function($scope, $location,store,$timeout, $window){
+
+    $scope.logOut = store.get('authToken');
+
+    $scope.removeLogin = function(){
+        var refresh = function(){$location.path("/"); $window.location.reload();};
+        store.remove('username');
+        store.remove('authToken');
+        $location.path("/accounts/logOut");
+        $timeout(refresh,3000);
+    }
+});
