@@ -30,7 +30,7 @@ angular.module('ToDoApp').config(function($locationProvider, $routeProvider){
 
     })
 
-    .when('/accounts/login',{
+        .when('/accounts/login',{
 
         templateUrl: 'templates/login.html',
         controller: 'LoginController'

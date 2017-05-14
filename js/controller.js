@@ -32,7 +32,7 @@ angular.module('RouteControllers',[])
     };
 
     $scope.refreshRegistration = function(){
-        $location.path("/");
+        $location.path("/todo");
         $window.location.reload();
     };
 
@@ -50,7 +50,8 @@ angular.module('RouteControllers',[])
                 $scope.login();
                 $scope.refreshRegistration();
             }).catch(function(err){
-                alert("Oops! Something Went Wrong!");
+                alert("Oops! You must be already registered, please log in instead");
+                $location.path("/accounts/login");
                 console.log(err);
             });
         }
@@ -58,7 +59,7 @@ angular.module('RouteControllers',[])
 
 })
 
-.controller('TodoController',function($scope,$http,$location, TodoAPIService, store) {
+.controller('TodoController',function($scope,$http,$location, TodoAPIService, store, $window) {
 
 
 
@@ -77,7 +78,7 @@ angular.module('RouteControllers',[])
 
             $scope.deleteTodo = function (id) {
                 TodoAPIService.deleteTodo(URL + "todo/" + id, $scope.username, $scope.authToken).then(function (results) {
-
+                    window.location.reload();
                     console.log(results);
                 }).catch(function (err) {
                     console.log(err);
@@ -101,16 +102,7 @@ angular.module('RouteControllers',[])
 
                     TodoAPIService.createTodo(URL + "todo/", $scope.todo, $scope.authToken).then(function (results) {
                         console.log(results);
-                        (function () {
-                            TodoAPIService.getTodos(URL + "todo/", $scope.username, $scope.authToken).then(function (results) {
-                                $scope.todos = results.data || [];
-                                console.log($scope.todos);
-
-                            }).catch(function (err) {
-                                console.log(err);
-                            })
-                        })();
-
+                        $window.location.reload();
                     }).catch(function (err) {
 
                         console.log(err);
@@ -160,7 +152,7 @@ angular.module('RouteControllers',[])
     $scope.loginUser = {};
 
     $scope.refreshLogin = function(){
-        $location.path("/");
+        $location.path("/todo");
         $window.location.reload();
     };
 
@@ -179,7 +171,8 @@ angular.module('RouteControllers',[])
                 alert("You have successfully Logged-in to Angular ToDo");
 
             }).catch(function(err){
-                alert("Oops! Something Went Wrong!");
+                alert("Oops! You probably are not registered yet, please register!");
+                $location.path("/accounts/register");
                 console.log(err);
             });
         }
