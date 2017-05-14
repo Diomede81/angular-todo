@@ -5,7 +5,7 @@ angular.module('TodoDirective',[]).directive('todoTable',function(){
 
     return{
         restrict:'E',
-        templateUrl:'/templates/directives/todo-table.html'
+        templateUrl:'templates/directives/todo-table.html'
     };
 
 })
@@ -14,7 +14,7 @@ angular.module('TodoDirective',[]).directive('todoTable',function(){
 
     return{
         restrict:'E',
-        templateUrl:'/templates/directives/navbar.html'
+        templateUrl:'templates/directives/navbar.html'
     }
 
 });
