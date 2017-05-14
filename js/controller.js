@@ -32,7 +32,7 @@ angular.module('RouteControllers',[])
     };
 
     $scope.refreshRegistration = function(){
-        $location.path("todo");
+        $location.path("/todo");
         $window.location.reload();
     };
 
@@ -51,7 +51,7 @@ angular.module('RouteControllers',[])
                 $scope.refreshRegistration();
             }).catch(function(err){
                 alert("Oops! You must be already registered, please log in instead");
-                $location.path("accounts/login");
+                $location.path("/accounts/login");
                 console.log(err);
             });
         }
@@ -73,7 +73,7 @@ angular.module('RouteControllers',[])
             $scope.todos = [];
 
             $scope.editTodo = function (id) {
-                $location.path("todo/edit/" + id);
+                $location.path("/todo/edit/" + id);
             };
 
             $scope.deleteTodo = function (id) {
@@ -111,7 +111,7 @@ angular.module('RouteControllers',[])
             };
         } else {
 
-            $location.path("accounts/register");
+            $location.path("/accounts/register");
         }
    })
 
@@ -134,7 +134,7 @@ angular.module('RouteControllers',[])
 
             TodoAPIService.editTodo(URL + "todo/" + id, $scope.todo, store.get('authToken')).then(function(results){
 
-                $location.path("todo");
+                $location.path("/todo");
             }).catch(function(err){
                 console.log(err);
 
@@ -191,7 +191,7 @@ angular.module('RouteControllers',[])
         var refresh = function(){$location.path("/"); $window.location.reload();};
         store.remove('username');
         store.remove('authToken');
-        $location.path("accounts/logOut");
+        $location.path("/accounts/logOut");
         $timeout(refresh,3000);
     }
 });
